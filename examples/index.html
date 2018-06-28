@@ -1,0 +1,17 @@
+<html>
+
+<body>
+    <script>
+        async function main() {
+            let body = await fetch("examples.wasm", { credentials: "same-origin" });
+            let buffer = await body.arrayBuffer();
+            let module = await WebAssembly.instantiate(buffer, {});
+
+            console.log(module.instance.exports.add(5, 2));
+        }
+
+        main()
+    </script>
+</body>
+
+</html>
